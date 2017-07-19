@@ -18,4 +18,4 @@ services:
     image: mvertes/alpine-mongo
     restart: unless-stopped
     ports:
-      - "27018:27018" # specify port forwarding
+      - "27017:27017" # specify port forwarding
