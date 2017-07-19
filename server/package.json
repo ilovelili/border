@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "npm run lint && npm run test && node ./bin/www",
+    "test": "node test/coverage.js",
+    "lint": "jshint ./configs ./routes ./test app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "debug": "~2.6.3",
+    "express": "~4.15.3",
+    "mongoose": "^4.11.0",
+    "morgan": "~1.8.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5",
+    "supertest": "^3.0.0",
+    "tape": "^4.6.3"
+  }
+}

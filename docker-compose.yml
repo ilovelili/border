@@ -1,0 +1,21 @@
+version: '3'
+
+# Define the services/containers to be run
+services:
+  angular: # client
+    build: client # specify the directory of the Dockerfile
+    ports:
+      - "4200:4200" # specify port forwarding
+
+  express: # server
+    build: server # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" # specify ports forwarding
+    links:
+      - database # link this service to the database service
+
+  database: # database
+    image: mvertes/alpine-mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27018" # specify port forwarding
