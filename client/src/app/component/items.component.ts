@@ -28,7 +28,9 @@ export class ItemsComponent extends BaseComponent implements OnInit {
         this.orderClient.getItems().subscribe(
             (res) => {
                 if (res) {
-                    this.orderitems = res;
+                    this.orderitems = res.filter(item=>{
+                        return item._id && item._id.item;
+                    });
                 }
             },
             (err) => {
