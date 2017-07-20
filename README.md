@@ -79,11 +79,18 @@ I personally perfer [Ansible](http://docs.ansible.com/ansible/docker_module.html
 
     However, Node.js/JavaScript also has important side effects like:
 
-    . Due to the dynamically-typed nature, Node.js can not reach the raw performance of CPU or memory bound tasks. And usually we hate runtime errors. (Although this can be solved if you use JavaScript transpilers like TypeScript)
+    . Due to the dynamically-typed nature, Node.js can not reach the raw performance of CPU or memory bound tasks. 
+    And usually we hate runtime errors. (Although this can be solved if you use JavaScript transpilers like TypeScript)
 
-    . JS language features may not be implemented or only be “patched on” as an add-on syntax. This can lead to a messier language design compared to languages that integrate features cleanly into their design. A good example of this is concurrent computing with JS. JS best practices for concurrent computing went from a concurrency API (using event-based callbacks), to the devolopment of promises, to the coming support for async generators. These days callback hell is still a serious issue with many Node.js applications; however, this has led to less readable code, slower development, and perhaps even more bugs.
+    . JS language features may not be implemented or only be “patched on” as an add-on syntax. This can lead to a messier
+    language design compared to languages that integrate features cleanly into their design. A good example of this is 
+    concurrent computing with JS. JS best practices for concurrent computing went from a concurrency API (using event-based callbacks), 
+    to the devolopment of promises, to the coming support for async generators. These days callback hell is still a serious issue with 
+    many Node.js applications; however, this has led to less readable code, slower development, and perhaps even more bugs.
+
+    All this means that the JavaScript language evolves rather slowly (and some would say poorly too), even when good concepts from other languages are known to work better.
     
-    BTW my favorite programming lanuage is Go. It has both great packages management feature and performance improvement. C# is great as well, but the community(Nuget) is not growing steadily.
+    BTW my favorite programming language is Go. It has both great package management feature and performance improvement. C# is great as well, but the community(Nuget) is not growing steadily.
 
 ## Contact
 Min Ju <route666@live.cn>
