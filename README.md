@@ -1,5 +1,5 @@
 # BorderGuru
-BorderGuru offline test
+BorderGuru offline test [![Build Status](https://travis-ci.org/ilovelili/border.svg?branch=master)](https://travis-ci.org/ilovelili/border)
 
 ## Demo
 http://188.226.157.229:4200/#/home
