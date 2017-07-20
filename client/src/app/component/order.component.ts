@@ -27,8 +27,10 @@ export class OrderComponent extends BaseComponent implements OnInit {
     search(orderId: string = '', company: string = '', address: string = '') {
         this.orderClient.getOrders(orderId, company, address).subscribe(
             (res) => {
-                if (res) {                    
-                    this.orders = res;
+                if (res) {
+                    this.orders = res.filter(order => {
+                        return order && order.orderId;
+                    });
                 }
             },
             (err) => {
@@ -46,7 +48,7 @@ export class OrderComponent extends BaseComponent implements OnInit {
         this.orderClient.deleteOrder(orderId).subscribe(
             (res) => {
                 // remove the order from orders
-                for(var i = 0; i < this.orders.length; i++) {
+                for (var i = 0; i < this.orders.length; i++) {
                     if (this.orders[i].orderId == orderId) {
                         this.orders.splice(i, 1);
                     }
