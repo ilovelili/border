@@ -4,6 +4,7 @@ const suite = supertest(app);
 
 const test = require('tape');
 
+// Healthcheck endpoint
 test('GET /', t => {
     'use strict';
     suite

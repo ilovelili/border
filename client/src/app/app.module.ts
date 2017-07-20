@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,8 @@ import { ItemsComponent } from './component/items.component';
 
 // services
 import { OrderClient } from './service/orderclient.service';
+
+enableProdMode()
 
 @NgModule({
     declarations: [

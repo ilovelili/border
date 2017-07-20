@@ -6,8 +6,10 @@ export class Order {
     item: string;
 }
 
-// Item entity
+// Aggregated Item entity
 export class Item {
-    item: string;
+    _id: {
+        item: string,
+    };
     count: number;
 }

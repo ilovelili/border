@@ -36,31 +36,64 @@ router.get('/orders', (req, res) => {
     // Connect to mongodb
     mongoose.connect(dbHost);
 
-    if (req.query.orderId) {
-        // find by id
-        Order.find({ orderId: req.query.orderId }, (err, orders) => {
-            if (err) res.status(500).send(err);
-            res.status(200).json(orders);
-        });
-    } else if (req.query.company) {
-        // find by company
-        Order.find({ company: req.query.company }, (err, orders) => {
-            if (err) res.status(500).send(err);
-            res.status(200).json(orders);
-        });
-    } else if (req.query.address) {
-        // find by address
-        Order.find({ address: req.query.address }, (err, orders) => {
-            if (err) res.status(500).send(err);
-            res.status(200).json(orders);
-        });
-    } else {
-        // find all
-        Order.find({}, (err, orders) => {
-            if (err) res.status(500).send(err);
-            res.status(200).json(orders);
-        });
+    let orderId = req.query.orderId,
+        company = req.query.company,
+        address = req.query.address,
+        search = {}; // find all if search is empty object
+
+    // search by orderId, company, address
+    if (orderId && company && address) {
+        search = {
+            orderId: decodeURIComponent(orderId),
+            company: decodeURIComponent(company),
+            address: decodeURIComponent(address),
+        };
     }
+    // search by company, address
+    else if (company && address) {
+        search = {
+            company: decodeURIComponent(company),
+            address: decodeURIComponent(address),
+        };
+    }
+    // search by orderId, address
+    else if (orderId && address) {
+        search = {
+            orderId: decodeURIComponent(orderId),
+            address: decodeURIComponent(address),
+        };
+    }
+    // search by orderId, company
+    else if (orderId && company) {
+        search = {
+            orderId: decodeURIComponent(orderId),
+            company: decodeURIComponent(company),
+        };
+    }
+    // search by orderId
+    else if (orderId) {
+        search = {
+            orderId: decodeURIComponent(orderId),
+        };
+    }
+    // search by company
+    else if (company) {
+        search = {
+            company: decodeURIComponent(company),
+        };
+    } 
+    // search by address
+    else if (address) {
+        search = {
+            address: decodeURIComponent(address),
+        };
+    }
+
+    // find
+    Order.find(search, (err, orders) => {
+        if (err) res.status(500).send(err);
+        res.status(200).json(orders);
+    });
 });
 
 /* POST create an order */
@@ -92,7 +125,7 @@ router.delete('/order', (req, res) => {
     // Connect to mongodb
     mongoose.connect(dbHost);
 
-    Order.remove({ orderId: req.query.orderId }, (err, orders) => {
+    Order.remove({ orderId: decodeURIComponent(req.query.orderId) }, (err, orders) => {
         if (err) res.status(500).send(err);
         res.status(200).json({ success: true });
     });
